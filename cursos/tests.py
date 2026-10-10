@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from io import BytesIO
 from tempfile import TemporaryDirectory
 
@@ -103,3 +104,8 @@ class GestorCursosTests(TestCase):
         self.assertRedirects(self.client.post(url), reverse('lista_cursos'))
         self.assertFalse(Curso.objects.filter(pk=self.curso.pk).exists())
         self.assertFalse(Leccion.objects.filter(pk=self.leccion.pk).exists())
+=======
+from django.test import TestCase
+
+# Create your tests here.
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625

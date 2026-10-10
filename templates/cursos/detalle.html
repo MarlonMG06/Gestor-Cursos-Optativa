@@ -1,9 +1,69 @@
+<<<<<<< HEAD
 {% extends 'layouts/base.html' %}
 {% block title %}{{ curso.titulo }} | Gestor de Cursos{% endblock %}
 {% block extra_head %}{% endblock %}
 {% block content %}
 <main class="mx-auto max-w-7xl px-6 py-10">
 <h1 class="mb-6 text-2xl font-bold">Detalle del curso</h1>
+=======
+{% load static %}
+<!doctype html>
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ curso.titulo }} | Gestor de Cursos</title>
+
+<!-- Tailwind CSS -->
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  </head>
+
+  <body class="min-h-screen bg-slate-50 text-slate-800">
+
+<!-- Navbar -->
+<header class="border-b border-slate-200 bg-white">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+
+    <div>
+      <p class="text-sm font-medium text-indigo-600">
+        Gestor de cursos
+      </p>
+
+      <h1 class="mt-1 text-xl font-bold text-slate-900">
+        Detalle del curso
+      </h1>
+    </div>
+
+    <a
+      href="{% url 'lista_cursos' %}"
+      class="hidden items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 sm:flex"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+
+      Volver a cursos
+    </a>
+
+  </div>
+</header>
+
+<!-- Contenido -->
+<main class="mx-auto max-w-7xl px-6 py-10">
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 
   <!-- Información principal del curso -->
   <section
@@ -30,9 +90,12 @@
             {{ curso.titulo }}
           </h2>
 
+<<<<<<< HEAD
           {% if curso.imagen %}
           <img src="{{ curso.imagen.url }}" alt="Portada de {{ curso.titulo }}" class="course-cover">
           {% endif %}
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
           <!-- Descripción -->
           <p class="mt-4 text-base leading-7 text-slate-600">
             {{ curso.descripcion }}
@@ -54,7 +117,10 @@
             </p>
           </div>
 
+<<<<<<< HEAD
           <a href="{% url 'editar_curso' curso.pk %}" class="action-button">Editar curso</a>
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
           <a
             href="{% url 'eliminar_curso' curso.pk %}"
             class="inline-flex items-center justify-center rounded-lg border border-red-200 bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-100"
@@ -147,7 +213,11 @@
                 <span
                   class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
                 >
+<<<<<<< HEAD
                   {{ leccion.get_estado_display }}
+=======
+                  {{ leccion.estado }}
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
                 </span>
 
               </div>
@@ -161,6 +231,7 @@
 
           </div>
 
+<<<<<<< HEAD
           <p class="text-sm text-slate-500">Prioridad: {{ leccion.get_prioridad_display }}</p>
           {% if leccion.estado != 'Publicado' %}
           <form method="post" action="{% url 'avanzar_estado_leccion' leccion.pk %}">
@@ -168,6 +239,8 @@
             <button class="action-button" type="submit">{% if leccion.estado == 'Borrador' %}Enviar a revisión{% else %}Publicar lección{% endif %}</button>
           </form>
           {% endif %}
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
           <!-- Acciones -->
           <div class="flex shrink-0 gap-2 lg:pt-1">
 
@@ -268,4 +341,9 @@
   </div>
 
 </main>
+<<<<<<< HEAD
 {% endblock %}
+=======
+  </body>
+</html>
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625

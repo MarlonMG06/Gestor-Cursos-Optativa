@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'layouts/base.html' %}
 {% block title %}Cursos | Gestor de Cursos{% endblock %}
 {% block extra_head %}{% endblock %}
@@ -5,6 +6,49 @@
 <main class="mx-auto max-w-7xl px-6 py-10">
 <h1 class="mb-6 text-2xl font-bold">Cursos disponibles</h1>
 <a href="{% url 'crear_curso' %}" class="action-button">Nuevo curso</a>
+=======
+{% load static %}
+<!doctype html>
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursos | Gestor de Cursos</title>
+
+<!-- Tailwind CSS -->
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  </head>
+
+  <body class="min-h-screen bg-slate-50 text-slate-800">
+
+<!-- Encabezado -->
+<header class="border-b border-slate-200 bg-white">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+    
+    <div>
+      <p class="text-sm font-medium text-indigo-600">Gestor de cursos</p>
+      <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-900">
+        Cursos disponibles
+      </h1>
+    </div>
+
+    {% if cursos %}
+    <a
+      href="{% url 'crear_curso' %}"
+      class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+    >
+      + Crear curso
+    </a>
+    {% endif %}
+
+  </div>
+</header>
+
+<!-- Contenido principal -->
+<main class="mx-auto max-w-7xl px-6 py-10">
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 
   {% if cursos %}
 
@@ -50,7 +94,10 @@
         </div>
 
         <!-- Título -->
+<<<<<<< HEAD
         {% if curso.imagen %}<img src="{{ curso.imagen.url }}" alt="Portada de {{ curso.titulo }}" class="course-cover">{% endif %}
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
         <h2 class="text-xl font-bold text-slate-900">
           {{ curso.titulo }}
         </h2>
@@ -167,4 +214,9 @@
   {% endif %}
 
 </main>
+<<<<<<< HEAD
 {% endblock %}
+=======
+  </body>
+</html>
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625

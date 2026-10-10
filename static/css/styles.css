@@ -1274,6 +1274,7 @@ video {
     padding-top: 0.25rem;
   }
 }
+<<<<<<< HEAD
 
 /* Elementos compartidos del gestor. */
 .site-nav { max-width:80rem; margin:auto; padding:1rem 1.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
@@ -1340,3 +1341,5 @@ video {
   .inline-form, .admin-list-item { align-items:stretch; flex-direction:column; }
   .row-actions { justify-content:flex-start; }
 }
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625

@@ -4,11 +4,14 @@ from . import views
 
 
 urlpatterns = [
+<<<<<<< HEAD
     path('inicio/', views.inicio, name='home'),
     path('acerca-de/', views.acerca_de, name='acerca_de'),
     path('cursos/', views.lista_cursos, name='cursos'),
     path('curso/<int:pk>/editar/', views.editar_curso, name='editar_curso'),
     path('leccion/<int:pk>/avanzar/', views.avanzar_estado_leccion, name='avanzar_estado_leccion'),
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
     path('', views.lista_cursos, name='lista_cursos'),
 
     path(

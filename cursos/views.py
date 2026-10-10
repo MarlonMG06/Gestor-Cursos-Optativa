@@ -1,13 +1,19 @@
+<<<<<<< HEAD
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CursoForm, LeccionForm
 from .models import Curso, Leccion
 
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 def lista_cursos(request):
     cursos = Curso.objects.all()
 
@@ -18,10 +24,16 @@ def lista_cursos(request):
     )
 
 
+<<<<<<< HEAD
 @login_required
 def crear_curso(request):
     if request.method == 'POST':
         form = CursoForm(request.POST, request.FILES)
+=======
+def crear_curso(request):
+    if request.method == 'POST':
+        form = CursoForm(request.POST)
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 
         if form.is_valid():
             form.save()
@@ -36,7 +48,10 @@ def crear_curso(request):
     )
 
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 def detalle_curso(request, pk):
     curso = get_object_or_404(Curso, pk=pk)
 
@@ -52,7 +67,10 @@ def detalle_curso(request, pk):
     )
 
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 def eliminar_curso(request, pk):
     curso = get_object_or_404(Curso, pk=pk)
 
@@ -70,7 +88,10 @@ def eliminar_curso(request, pk):
     )
 
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 def crear_leccion(request, pk):
     curso = get_object_or_404(Curso, pk=pk)
 
@@ -96,7 +117,10 @@ def crear_leccion(request, pk):
     )
 
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 def editar_leccion(request, pk):
     leccion = get_object_or_404(Leccion, pk=pk)
 
@@ -122,7 +146,10 @@ def editar_leccion(request, pk):
     )
 
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
 def eliminar_leccion(request, pk):
     leccion = get_object_or_404(Leccion, pk=pk)
 
@@ -140,6 +167,7 @@ def eliminar_leccion(request, pk):
         'cursos/eliminar_leccion.html',
         {'leccion': leccion}
     )
+<<<<<<< HEAD
 
 
 @login_required
@@ -177,3 +205,5 @@ def inicio(request):
 @login_required
 def acerca_de(request):
     return render(request, 'cursos/acerca_de.html')
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625

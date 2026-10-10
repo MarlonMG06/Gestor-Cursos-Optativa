@@ -21,8 +21,11 @@ class Curso(models.Model):
         default=NIVEL_PRINCIPIANTE
     )
 
+<<<<<<< HEAD
     imagen = models.ImageField(upload_to='cursos/', blank=True)
 
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
     def __str__(self):
         return self.titulo
 
@@ -30,12 +33,18 @@ class Curso(models.Model):
 class Leccion(models.Model):
 
     ESTADO_BORRADOR = 'Borrador'
+<<<<<<< HEAD
     ESTADO_REVISION = 'En revision'
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
     ESTADO_PUBLICADO = 'Publicado'
 
     ESTADOS = [
         (ESTADO_BORRADOR, 'Borrador'),
+<<<<<<< HEAD
         (ESTADO_REVISION, 'En revisión'),
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
         (ESTADO_PUBLICADO, 'Publicado'),
     ]
 
@@ -54,9 +63,12 @@ class Leccion(models.Model):
         default=ESTADO_BORRADOR
     )
 
+<<<<<<< HEAD
     PRIORIDADES = [('BAJA', 'Baja'), ('MEDIA', 'Media'), ('ALTA', 'Alta')]
     prioridad = models.CharField(max_length=5, choices=PRIORIDADES, default='MEDIA')
 
+=======
+>>>>>>> 5f3720524fe05cf11850da46746ec79b8d439625
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
