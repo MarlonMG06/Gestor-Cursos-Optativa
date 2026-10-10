@@ -1,0 +1,9 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Inicio | Gestor de Cursos{% endblock %}
+{% block content %}
+<main class="auth-panel">
+  <h1 class="text-2xl font-bold">Bienvenido, {{ user.username }}</h1>
+  <p class="mt-4 text-slate-600">Organiza tus cursos, agrega sus portadas y prepara las lecciones para su publicación.</p>
+  <div class="mt-8 flex gap-4"><a class="action-button" href="{% url 'lista_cursos' %}">Ver cursos</a><a class="action-button" href="{% url 'crear_curso' %}">Crear curso</a></div>
+</main>
+{% endblock %}

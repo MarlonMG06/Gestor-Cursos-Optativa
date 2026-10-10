@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Iniciar sesión | Gestor de Cursos{% endblock %}
+{% block content %}
+<main class="auth-panel">
+  <p class="admin-kicker">Acceso</p>
+  <h1 class="text-2xl font-bold">Iniciar sesión</h1>
+  <p class="mt-4 text-slate-600">Accede para administrar tus cursos y lecciones.</p>
+  <form method="post" class="editor-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="action-button">Ingresar</button>
+  </form>
+  <p class="auth-helper">¿Aún no tienes cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
+</main>
+{% endblock %}

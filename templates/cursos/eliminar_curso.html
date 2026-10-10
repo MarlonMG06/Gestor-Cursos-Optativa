@@ -1,0 +1,92 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Eliminar curso | Gestor de Cursos{% endblock %}
+{% block extra_head %}{% endblock %}
+{% block content %}
+<main class="flex min-h-[calc(100vh-89px)] items-center justify-center px-6 py-10">
+<h1 class="mb-6 text-2xl font-bold">Eliminar curso</h1>
+
+      <section
+        class="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
+      >
+
+        <div class="flex justify-center">
+          <div
+            class="flex h-14 w-14 items-center justify-center rounded-full bg-red-50 text-red-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v3.75m0 3.75h.008v.008H12V16.5z"
+              />
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.29 3.86l-7.1 12.28A2 2 0 004.92 19h14.16a2 2 0 001.73-2.86L13.71 3.86a2 2 0 00-3.42 0z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="mt-6 text-center">
+          <h2 class="text-xl font-bold text-slate-900">
+            ¿Eliminar este curso?
+          </h2>
+
+          <p class="mt-3 text-sm leading-6 text-slate-500">
+            Estás a punto de eliminar el siguiente curso:
+          </p>
+
+          <div
+            class="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3"
+          >
+            <p class="font-semibold text-slate-900">
+              {{ curso.titulo }}
+            </p>
+          </div>
+
+          {% if total_lecciones == 1 %}
+          <p class="mt-4 text-sm leading-6 text-red-600">
+            También se eliminará permanentemente la lección asociada a este curso.
+          </p>
+          {% elif total_lecciones > 1 %}
+          <p class="mt-4 text-sm leading-6 text-red-600">
+            También se eliminarán permanentemente las {{ total_lecciones }} lecciones asociadas a este curso.
+          </p>
+          {% endif %}
+
+          <p class="mt-4 text-xs leading-5 text-slate-400">
+            Esta acción no se puede deshacer.
+          </p>
+        </div>
+
+        <form method="POST" class="mt-8 flex flex-col gap-3 sm:flex-row-reverse">
+          {% csrf_token %}
+
+          <button
+            type="submit"
+            class="inline-flex flex-1 items-center justify-center rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+          >
+            Confirmar eliminación
+          </button>
+
+          <a
+            href="{% url 'detalle_curso' curso.pk %}"
+            class="inline-flex flex-1 items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+          >
+            Cancelar
+          </a>
+        </form>
+
+      </section>
+
+    </main>
+{% endblock %}

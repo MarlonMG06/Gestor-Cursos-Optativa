@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Permisos | Gestor de Cursos{% endblock %}
+{% block content %}
+<main class="admin-shell">
+  <section class="admin-heading">
+    <div><p class="admin-kicker">Administración</p><h1>Permisos</h1><p>Define qué acciones puede realizar cada grupo en cursos, lecciones y demás módulos.</p></div>
+    <a class="secondary-button" href="{% url 'grupos' %}">Volver a grupos</a>
+  </section>
+
+  <section class="admin-card">
+    <form action="{% url 'permisos' %}" method="post" class="admin-form">
+      {% csrf_token %}
+      <div class="field-row">
+        <label for="grupo">Grupo</label>
+        <select name="grupo" id="grupo" onchange="window.location.href='?grupo=' + this.value;">
+          {% for grupo_opcion in grupos %}<option value="{{ grupo_opcion.id }}" {% if grupo and grupo_opcion.id == grupo.id %}selected{% endif %}>{{ grupo_opcion.name }}</option>{% endfor %}
+        </select>
+      </div>
+
+      {% if grupo %}
+        <div class="permission-header"><h2>Permisos de {{ grupo.name }}</h2><p>Los permisos de Curso y Lección aparecen con la aplicación <strong>cursos</strong>.</p></div>
+        <div class="permission-grid">
+          {% for permiso in permisos %}
+            <label class="permission-item">
+              <input type="checkbox" name="permisos" value="{{ permiso.id }}" {% if permiso.id in permisos_grupo %}checked{% endif %}>
+              <span><strong>{{ permiso.name }}</strong><small>{{ permiso.content_type.app_label }} · {{ permiso.codename }}</small></span>
+            </label>
+          {% empty %}<p class="empty-state">No hay permisos disponibles.</p>{% endfor %}
+        </div>
+        <button type="submit" class="action-button">Guardar permisos</button>
+      {% else %}
+        <p class="empty-state">Primero debes crear un grupo para poder asignarle permisos.</p>
+      {% endif %}
+    </form>
+  </section>
+</main>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Acerca de | Gestor de Cursos{% endblock %}
+{% block content %}
+<main class="auth-panel">
+<h1 class="text-2xl font-bold">Acerca del gestor de cursos</h1>
+<p class="mt-4">Aplicación desarrollada con Django para crear, consultar, editar y eliminar cursos y sus lecciones.</p>
+<p class="mt-4">Las lecciones se organizan por prioridad y avanzan de borrador a revisión y publicado.</p>
+<a class="action-button" href="{% url 'lista_cursos' %}">Ver cursos</a>
+</main>
+{% endblock %}

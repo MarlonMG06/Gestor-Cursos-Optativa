@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Editar grupo | Gestor de Cursos{% endblock %}
+{% block content %}
+<main class="admin-shell">
+  <a class="back-link" href="{% url 'grupos' %}">← Volver a grupos</a>
+  <section class="admin-heading"><div><p class="admin-kicker">Administración</p><h1>{{ grupo.name }}</h1><p>Edita el grupo y administra sus miembros.</p></div></section>
+
+  <section class="admin-card">
+    <h2>Nombre del grupo</h2>
+    <form method="post" class="inline-form">{% csrf_token %}<input type="text" name="name" value="{{ grupo.name }}" required maxlength="150"><button class="action-button" type="submit">Guardar nombre</button></form>
+  </section>
+
+  <div class="admin-two-cols">
+    <section class="admin-card">
+      <h2>Miembros actuales</h2>
+      {% if miembros %}
+        <div class="admin-list">
+          {% for usuario in miembros %}
+            <article class="admin-list-item"><div><strong>{{ usuario.get_full_name|default:usuario.username }}</strong><span>@{{ usuario.username }}</span></div><form method="post" action="{% url 'eliminar_usuario_grupo' grupo.id %}">{% csrf_token %}<input type="hidden" name="id_user" value="{{ usuario.id }}"><button class="danger-button" type="submit">Quitar</button></form></article>
+          {% endfor %}
+        </div>
+      {% else %}<p class="empty-state">Este grupo aún no tiene miembros.</p>{% endif %}
+    </section>
+
+    <section class="admin-card">
+      <h2>Agregar usuario</h2>
+      {% if no_miembros %}
+        <form method="post" action="{% url 'agregar_usuario_grupo' grupo.id %}" class="admin-form">{% csrf_token %}
+          <div class="field-row"><label for="id_user">Usuario disponible</label><select id="id_user" name="id_user" required>{% for usuario in no_miembros %}<option value="{{ usuario.id }}">{{ usuario.username }}{% if usuario.get_full_name %} — {{ usuario.get_full_name }}{% endif %}</option>{% endfor %}</select></div>
+          <button class="action-button" type="submit">Agregar al grupo</button>
+        </form>
+      {% else %}<p class="empty-state">Todos los usuarios ya pertenecen a este grupo.</p>{% endif %}
+    </section>
+  </div>
+</main>
+{% endblock %}

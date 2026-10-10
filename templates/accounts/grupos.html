@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Grupos | Gestor de Cursos{% endblock %}
+{% block content %}
+<main class="admin-shell">
+  <section class="admin-heading">
+    <div><p class="admin-kicker">Administración</p><h1>Grupos</h1><p>Organiza a los usuarios por roles de trabajo dentro del gestor de cursos.</p></div>
+    <a class="secondary-button" href="{% url 'permisos' %}">Administrar permisos</a>
+  </section>
+
+  <section class="admin-card">
+    <h2>Crear grupo</h2>
+    <form method="post" class="inline-form">
+      {% csrf_token %}
+      <input name="nombre_grupo" type="text" maxlength="150" required placeholder="Ej. Editores de cursos">
+      <button class="action-button" type="submit">Agregar grupo</button>
+    </form>
+  </section>
+
+  <section class="admin-card">
+    <h2>Grupos registrados</h2>
+    {% if grupos %}
+      <div class="admin-list">
+        {% for grupo in grupos %}
+          <article class="admin-list-item">
+            <div><strong>{{ grupo.name }}</strong><span>{{ grupo.user_set.count }} usuario{{ grupo.user_set.count|pluralize }}</span></div>
+            <div class="row-actions">
+              <a class="secondary-button" href="{% url 'editar_grupo' grupo.id %}">Editar</a>
+              <form method="post" action="{% url 'eliminar_grupo' grupo.id %}">{% csrf_token %}<button class="danger-button" type="submit" onclick="return confirm('¿Seguro que deseas eliminar este grupo?')">Eliminar</button></form>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}<p class="empty-state">Todavía no hay grupos creados.</p>{% endif %}
+  </section>
+</main>
+{% endblock %}
